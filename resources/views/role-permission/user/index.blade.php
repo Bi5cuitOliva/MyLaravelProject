@@ -27,6 +27,7 @@
                                         <th>Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Roles</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -42,7 +43,15 @@
                                          </td>
                                          <td>{{$user->email}}</td>
                                          <td>
-                            
+                                            @if (!empty($user->getRoleNames()))
+                                            @foreach ($user->getRoleNames() as $rolename)
+                                            <label class="badge bg-primary mx-1">{{$rolename}}</label>
+
+                                            @endforeach
+                                            @endif
+                                         </td>
+                                         <td>
+
                                          <a href="{{url('users/'.$user->id.'/edit') }}" class="btn btn-success">Edit</a>
                                          <a href="{{url('users/'.$user->id.'/delete') }}" class="btn btn-danger mx-2">Delete</a>
                                          </td>

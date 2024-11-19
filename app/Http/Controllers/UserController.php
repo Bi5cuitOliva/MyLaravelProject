@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,7 +20,10 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('role-permission.user.create');
+        $roles = Role::pluck('name','name')->all();
+        return view('role-permission.user.create',[
+            'roles' => $roles
+        ]);
     }
 
     public function store(Request $request)
