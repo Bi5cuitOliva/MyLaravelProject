@@ -30,11 +30,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($permissions as $permission )
+
                                 <tr>
                                   <td>
-
+                                 {{$permission->id}}
                                   </td>
+                                  <td>
+                                    {{$permission->name}}
+                                     </td>
+                                     <td>
+                                     <a href="{{url('permissions/'.$permission->id.'/edit') }}" class="btn btn-success">Edit</a>
+                                     <a href="">Delete</a>
+                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
 

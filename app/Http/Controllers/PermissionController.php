@@ -33,11 +33,28 @@ class PermissionController extends Controller
         return redirect('permissions') ->with('status','Entitlement Confirmed Successfully');
     }
 
-    public function edit(){
-
+    public function edit(Permission $permission){
+         return view('role-permission.permission.edit',[
+            'permission'=> $permission
+         ]);
     }
 
-    public function update(){
+    public function update(Request $request, Permission $permission){
+
+        $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'unique:permissions,name,'.$permission->id
+            ]
+
+            ]);
+
+            $permission->update([
+                'name' => $request->name
+            ]);
+
+            return redirect('permissions')->with('status','Entitlements Modified Successfully');
 
     }
 
