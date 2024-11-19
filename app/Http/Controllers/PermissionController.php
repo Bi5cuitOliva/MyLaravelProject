@@ -9,8 +9,10 @@ class PermissionController extends Controller
 {
     //
     public function index(){
-
-        return view('role-permission.permission.index ');
+        $permissions = Permission::get();
+        return view('role-permission.permission.index ', [
+            'permissions' => $permissions
+        ]);
     }
 
     public function create(){
@@ -28,7 +30,7 @@ class PermissionController extends Controller
       Permission::create([
          'name' => $request->name
       ]);
-        return redirect('permissions') ->with('status','Permission Created Successfully');
+        return redirect('permissions') ->with('status','Entitlement Confirmed Successfully');
     }
 
     public function edit(){
