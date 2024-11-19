@@ -20,6 +20,7 @@
                         <div class="mb-3">
                             <label for=""> Name</label>
                             <input type="text" name="name" value="{{$user->name}}" class="form-control" />
+                            @error('name') <span class="text-danger">{{$message}}</span>  @enderror
                         </div>
                         <div class="mb-3">
                             <label for=""> Email</label>
@@ -28,6 +29,7 @@
                         <div class="mb-3">
                             <label for=""> Password</label>
                             <input type="text" name="password" class="form-control" />
+                            @error('password') <span class="text-danger">{{$message}}</span>  @enderror
                         </div>
                         <div class="mb-3">
                             <label for=""> Roles</label>
@@ -41,6 +43,7 @@
 
                                 @endforeach
                             </select>
+                            @error('name') <span class="text-danger">{{$message}}</span>  @enderror
                         </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Update</button>
