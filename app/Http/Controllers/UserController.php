@@ -45,4 +45,16 @@ class UserController extends Controller
 
         return redirect('/users')->with('status','User created successfully with entitlements');
     }
+
+    public function edit(User $user){
+
+        $roles = Role::pluck('name','name')->all();
+        $userRoles = $user->roles->pluck('name','name')->all();
+      return view('role-permission.user.edit',[
+        'user' =>  $user,
+        'roles' => $roles,
+        'userRoles' => $userRoles
+      ]);
+
+    }
 }
