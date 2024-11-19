@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::group(['middleware' => 'auth'],  function() {
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 Route::get('permissions/{permissionId}/delete',[App\Http\Controllers\PermissionController::class,'destroy']);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
@@ -24,6 +26,9 @@ Route::put('roles/{roleId}/give-permissions',[App\Http\Controllers\RoleControlle
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
+
+});
+
 
 Route::get('/', function () {
     return view('welcome');
