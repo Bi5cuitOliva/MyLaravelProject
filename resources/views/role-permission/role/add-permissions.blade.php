@@ -20,7 +20,7 @@
                             <label for="">Entitlements</label>
                             <div class="row">
                                 @foreach ($permissions as $permission )
-                              <div class="col-md-3">
+                              <div class="col-md-2">
                                 <label for="">
                             <input type="checkbox" name="permission[]" value="{{$permission->id}}" class="form-control" />
                             {{$permission->name}}
