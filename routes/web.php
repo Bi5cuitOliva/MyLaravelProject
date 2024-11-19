@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 Route::get('permissions/{permissionId}/delete',[App\Http\Controllers\PermissionController::class,'destroy']);
+Route::resource('roles', App\Http\Controllers\RoleController::class);
 Route::get('/', function () {
     return view('welcome');
 });
