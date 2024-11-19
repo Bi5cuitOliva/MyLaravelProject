@@ -72,4 +72,15 @@ public function addPermissionToRole($roleId){
         'permissions' => $permissions
     ]);
 }
+
+public function givePermissionToRole(Request $request, $roleId)
+{
+    $request->validate([
+        'permission' => 'required'
+    ]);
+    $role =Role::findOrFall($roleId);
+    $role->syncPermissions($request->permission);
+
+    return redirect()->back()->with('status','Entitlement added to Responsibility');
+}
 }
