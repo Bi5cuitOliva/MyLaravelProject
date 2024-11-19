@@ -21,12 +21,17 @@
                        @csrf
                        @method('PUT')
                         <div class="mb-3">
+                            @error('permission')
+                           <span class="text danger">{{$message}}</span>
+                            @enderror
                             <label for="">Entitlements</label>
                             <div class="row">
                                 @foreach ($permissions as $permission )
                               <div class="col-md-2">
                                 <label for="">
-                            <input type="checkbox" name="permission[]" value="{{$permission->id}}" class="form-control" />
+                            <input type="checkbox" name="permission[]" value="{{$permission->name}}"
+                               {{in_array($permission->id, $rolePermissions) ? 'checked':''}}
+                            />
                             {{$permission->name}}
                                 </label>
                         </div>
