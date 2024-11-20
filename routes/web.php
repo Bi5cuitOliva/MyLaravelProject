@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['middleware' => 'auth'],  function() {
+Route::group(['middleware' => ['role:writer']],  function() {
 Route::resource('permissions', App\Http\Controllers\PermissionController::class);
 Route::get('permissions/{permissionId}/delete',[App\Http\Controllers\PermissionController::class,'destroy']);
 Route::resource('roles', App\Http\Controllers\RoleController::class);
